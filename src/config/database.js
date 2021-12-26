@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-module.exports = {
+const databaseConfig = {
     dialect: process.env.DB_DIALECT,
     host: process.env.DB_HOST,
     username: process.env.DB_USERNAME,
@@ -11,3 +11,5 @@ module.exports = {
         underscored: true
     }
 };
+
+module.exports = databaseConfig;

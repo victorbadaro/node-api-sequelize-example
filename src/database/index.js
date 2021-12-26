@@ -1,9 +1,9 @@
-import Sequelize from 'sequelize';
-import databaseConfig from '../config/database';
-import User from '../models/User';
+const Sequelize = require('sequelize');
+const databaseConfig = require('../config/database');
+const User = require('../models/User');
 
 const connection = new Sequelize(databaseConfig);
 
 User.init(connection);
 
-export default connection;
+module.exports = connection;

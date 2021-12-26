@@ -1,7 +1,8 @@
-import 'dotenv/config';
-import express from 'express';
-import { router } from './routes';
-import './database';
+require('dotenv').config();
+require('./database');
+
+const express = require('express');
+const router = require('./routes');
 
 const app = express();
 const SERVER_PORT = process.env.SERVER_PORT;

@@ -1,3 +1,5 @@
+const User = require('../models/User');
+
 class UserController {
     async index(request, response) {
 
@@ -8,7 +10,15 @@ class UserController {
     }
 
     async create(request, response) {
+        const { name, email } = request.body;
+        const userFoundByEmail = await User.findOne({ where: { email } });
 
+        if (userFoundByEmail)
+            return response.status(400).json({ error: 'Email already exists!' });
+
+        const user = await User.create({ name, email });
+
+        return response.status(201).json(user);
     }
 
     async update(request, response) {
@@ -20,4 +30,4 @@ class UserController {
     }
 }
 
-export default new UserController();
+module.exports = new UserController();
